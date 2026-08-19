@@ -1,0 +1,7 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@Ecommerce_HostAddress = http://localhost:57392
+
+GET {{Ecommerce_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
