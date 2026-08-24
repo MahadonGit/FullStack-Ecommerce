@@ -20,7 +20,7 @@ namespace ECommerce.Data
                 {
                     UserName = "admin@gmail.com",
                     Email = "admin@gmail.com",
-                    FullName = "System Admin",
+                    FirstName = "System Admin",
                     EmailConfirmed = true
                 };
 
