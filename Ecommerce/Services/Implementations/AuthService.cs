@@ -230,7 +230,7 @@ namespace ECommerce.Services.Implementations
                 Token = token,
                 UserId = user.Id,
                 Email = user.Email!,
-                FullName = user.FullName,
+                FullName = user.FirstName,
                 Roles = roles
             };
 
@@ -275,7 +275,9 @@ namespace ECommerce.Services.Implementations
             var user = new ApplicationUser
             {
                 Email = dto.Email,
-                FullName = dto.FullName,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                
                 UserName = dto.Email
             };
 
@@ -331,7 +333,8 @@ namespace ECommerce.Services.Implementations
             // --------------------------------------------------------
             var customer = new Customer
             {
-                Name = user.FullName,
+                Name = user.FirstName,
+                
                 ApplicationUserId = user.Id
             };
 
@@ -366,7 +369,7 @@ namespace ECommerce.Services.Implementations
             return new UserResponseDto
             {
                 UserId = user.Id,
-                FullName = user.FullName,
+                FullName = user.FirstName,
                 Email = user.Email!,
                 Roles = new List<string>
         {
