@@ -1,4 +1,3 @@
 <Solution>
   <Project Path="Ecommerce/Ecommerce.csproj" />
-  <Project Path="EcommerceFrontend/EcommerceFrontend.csproj" Id="8b93c6f2-e913-4ebd-acd8-d414b5bc8d39" />
 </Solution>
