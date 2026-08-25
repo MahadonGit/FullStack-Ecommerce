@@ -7,12 +7,11 @@ using Ecommerce.Services.Interfaces;
 using ECommerce.Data;
 using ECommerce.Services.Implementations;
 using ECommerce.Services.Interfaces;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -122,46 +121,26 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "ECommerce API",
+        Title = "Ecommerce API",
         Version = "v1"
     });
 
-    options.AddSecurityDefinition("Bearer",
-        new OpenApiSecurityScheme
-        {
-            Name = "Authorization",
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter your JWT token here."
+    });
 
-            Type = SecuritySchemeType.Http,
-
-            Scheme = "bearer",
-
-            BearerFormat = "JWT",
-
-            In = ParameterLocation.Header,
-
-            Description =
-                "Enter JWT Token.\n\nExample:\nBearer eyJhbGciOiJIUzI1NiIs..."
-        });
-
-    options.AddSecurityRequirement(
+    options.AddSecurityRequirement(document =>
         new OpenApiSecurityRequirement
         {
-            {
-                new OpenApiSecurityScheme
-                {
-                    Reference =
-                        new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                },
-
-                Array.Empty<string>()
-            }
+            [new OpenApiSecuritySchemeReference("Bearer", document)] = []
         });
 });
-
 
 
 // Add OpenAPI

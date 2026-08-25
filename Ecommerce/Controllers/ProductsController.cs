@@ -210,7 +210,7 @@ public class ProductsController : ControllerBase
     }
 
 
-    [AllowAnonymous]
+    [Authorize(Roles = Roles.Admin)]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProduct(
     int id,
@@ -257,10 +257,10 @@ public class ProductsController : ControllerBase
 
         return Ok(response);
     }
-    //DEl
+    //DELETE
 
 
-    [AllowAnonymous]
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {

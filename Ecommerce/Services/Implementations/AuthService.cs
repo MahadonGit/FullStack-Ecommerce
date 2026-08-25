@@ -230,7 +230,8 @@ namespace ECommerce.Services.Implementations
                 Token = token,
                 UserId = user.Id,
                 Email = user.Email!,
-                FullName = user.FirstName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 Roles = roles
             };
 
@@ -369,7 +370,8 @@ namespace ECommerce.Services.Implementations
             return new UserResponseDto
             {
                 UserId = user.Id,
-                FullName = user.FirstName,
+                FirstName = user.FirstName,
+                LastName  = user.LastName,
                 Email = user.Email!,
                 Roles = new List<string>
         {
